@@ -8,7 +8,7 @@ import api, {expectTokenScope} from '../github-helpers/api.js';
 import {cacheByRepo} from '../github-helpers/index.js';
 
 const hasAnyProjects = cache.function('has-projects', async (): Promise<boolean> => {
-	await expectTokenScope('read:project');
+	await expectTokenScope('project');
 	const {repository, organization} = await api.v4(`
 		query hasAnyProjects($owner: String!, $name: String!) {
 			repository(owner: $owner, name: $name) {
